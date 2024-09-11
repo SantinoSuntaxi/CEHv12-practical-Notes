@@ -2175,4 +2175,4 @@ Interesting URL:
 ------WebKitFormBoundary12ZF6IVGPcAUFBR4
 Content-Disposition: form-data; name="uploaded"; filename="exploit.php"
 Content-Type: application/x-php`
-- replace image/jpeg
+- replace Content-Type: image/jpeg
