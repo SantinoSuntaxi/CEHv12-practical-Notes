@@ -1556,6 +1556,10 @@ Example: `hydra -L /home/usernames.txt -P /home/pass.txt ftp://IP`
 - Example:
 	* `hydra -l admin -P ./rockyou.txt IP http-post-form "/monitoring/login.php:username=admin&password=^PASS^:Invalid Credentials!"`
 
+	* `hydra -l admin -P /usr/share/wordlists/john.lst 'http-get-form://127.0.0.1:42001/vulnerabilities brute/:username=^USER^&password=^PASS^&Login=Login:H=Cookie\:PHPSESSID=crqloublvsn9ed8vppss17jvjl; security=low:F=Username and/or password incorrect'` 
+
+
+
 
 ## <span style="color: #3498db; font-size: 0.8em;">Brute force to popup</span>
 
