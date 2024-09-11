@@ -2170,7 +2170,7 @@ Interesting URL:
 > subir el archivo y buscar la ruta para ejecutarlo en el navegador y validar en la consola de meterpreter la conexión
 
 
- >Medium
+ >Medium level 
  - `100000
 ------WebKitFormBoundary12ZF6IVGPcAUFBR4
 Content-Disposition: form-data; name="uploaded"; filename="exploit.php"
