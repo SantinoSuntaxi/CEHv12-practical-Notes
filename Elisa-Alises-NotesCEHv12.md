@@ -848,8 +848,19 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 >  Responder: Obtaining credentials
 - `sudo ./Responder.py -I interface`
 
+> transform ssh private key .txt to john format
+- `ssh2john ssh.txt >key.txt`
+- `john key.txt -w=/usr/share/wordlists/rockyou.txt`
+- `cp ssh.txt privateKey.pem`
+- `chmod 600 privateKey.pem`
+- `ssh -i privateKey.pem user@ip`
+
+
+
+
 > John The Ripper: Crack the hash
 - `john hash.txt`
+- `john key.txt -w=/usr/share/wordlists/rockyou.txt`
 - `john --wordlist=path hash`
 - `john hash --show`
 - `john --format=hash_type --wordlist=pathWordlist pathFileContainsHash`
@@ -1554,7 +1565,12 @@ Example: `hydra -L /home/usernames.txt -P /home/pass.txt ftp://IP`
 >  Hydra
 - `hydra -l <username> -P </passwords_list.txt> target http-post-form "/login-page.php:fieldUsername=username&fieldPassword=^PASS^:text"``
 - Example:
-	* `hydra -l admin -P ./rockyou.txt IP http-post-form "/monitoring/login.php:username=admin&password=^PASS^:Invalid Credentials!"`
+
+	* `Post`
+
+	* `hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.61.16 http-post-form "/admin/index.php/:user=admin&pass=^PASS^:Username or password invalid"`
+
+	* `Get`
 
 	* `hydra -l admin -P /usr/share/wordlists/john.lst 'http-get-form://127.0.0.1:42001/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:H=Cookie\:PHPSESSID=crqloublvsn9ed8vppss17jvjl; security=low:F=Username and/or password incorrect'` 
 
@@ -2185,4 +2201,15 @@ Content-Type: application/x-php`
 
 
 ## <span style="color: #3498db; font-size: 0.8em;"> SQL injection </span>
+
+## <span style="color: #3498db; font-size: 0.8em;"> scalate privileges with passwd and  </span>
+
+> Copy passwd and shadow registers on diferent files
+- `cat /etc/passwd` - user information
+- `sudo cat  /etc/shadow` - hash passwords
+> merge files with unshadow comand
+
+- `unshadow passwd.txt shadow.txt >fileJohn.txt `
+- `john fileJohn.txt -w=/usr/share/wordlists/rockyou.txt`
+
 
