@@ -2200,7 +2200,9 @@ Content-Type: application/x-php`
 - replace Content-Type: image/jpeg
 
 
-## <span style="color: #3498db; font-size: 0.8em;"> SQL injection </span>
+## <span style="color: #3498db; font-size: 0.8em;"> Find file to all system  </span>
+
+- `sudo find / -name root.txt 2>/dev/null`
 
 ## <span style="color: #3498db; font-size: 0.8em;"> scalate privileges with passwd and  </span>
 
