@@ -84,6 +84,41 @@ https://www.arin.net/about/welcome/region/
 
 > nmap
 
+| Bandera             | Función                                            | Uso Típico                                   |
+|---------------------|----------------------------------------------------|---------------------------------------------|
+| `-sS`               | Escaneo SYN (Stealth)                             | Escaneo rápido y "silencioso" en firewalls. |
+| `-sT`               | Escaneo TCP completo                              | Realiza una conexión TCP completa (3-way handshake). |
+| `-sU`               | Escaneo UDP                                       | Descubre servicios UDP en puertos específicos. |
+| `-A`                | Detecta SO, servicios y ejecuta scripts predeterminados. | Obtención de información avanzada.          |
+| `-p`                | Especifica los puertos a escanear                 | Escaneo de puertos específicos (e.g., `-p80,443`). |
+| `--top-ports <n>`   | Escanea los <n> puertos más comunes               | Ahorra tiempo enfocándose en puertos frecuentes. |
+| `--open`            | Muestra solo puertos abiertos                     | Filtra la salida para una revisión más rápida. |
+| `-T<0-5>`           | Configura la velocidad del escaneo                | `T4` (rápido) o `T5` (muy rápido) según el contexto. |
+| `--script`          | Ejecuta scripts NSE específicos                   | Ejemplo: `--script vuln` para detectar vulnerabilidades. |
+| `-Pn`               | Omite la detección de host (sin ping)             | Para objetivos que no responden al ICMP/ping. |
+| `-oN <file>`        | Guarda la salida en formato legible               | Documentación de resultados.                 |
+| `-oG <file>`        | Guarda la salida en formato "grepable"            | Ideal para análisis automatizado posterior.  |
+| `-v`                | Modo detallado                                    | Muestra información en tiempo real.          |
+
+
+
+| Bandera | Función                          | Uso Típico                                  |
+|---------|----------------------------------|--------------------------------------------|
+| `-sC`   | Ejecuta scripts predeterminados | Descubrir configuraciones comunes y vulnerabilidades básicas. |
+| `-sV`   | Detecta versiones de servicios  | Identificar servicios y versiones precisas en puertos abiertos. |
+| `-sN`   | Escaneo nulo (Null Scan)        | Evitar detección en firewalls o IDS básicos (silencioso). |
+| `-sU`   | Escaneo de puertos UDP          | Identificar servicios UDP como DNS, SNMP, y NTP. |
+
+
+| Categoría        | Descripción                                         | Ejemplo de Scripts Ejecutados                     |
+|------------------|-----------------------------------------------------|--------------------------------------------------|
+| **safe**         | Scripts seguros que no afectan al sistema escaneado.| `ssl-cert`, `dns-service-discovery`             |
+| **default**      | Scripts básicos ejecutados por defecto en `-sC`.    | `http-title`, `ssh-hostkey`, `smb-os-discovery`  |
+| **Enumeración**  | Identifica servicios o configuraciones específicas. | `ftp-anon`, `smb-os-discovery`, `http-title`    |
+| **Vulnerabilidades** | Detecta problemas de seguridad comunes.           | `ssl-cert`, `vulners`                           |
+| **DNS**          | Scripts orientados al análisis DNS.                 | `dns-service-discovery`                         |
+
+
 Examples:
 - `nmap IP/24`
 - `nmap IP/16`
