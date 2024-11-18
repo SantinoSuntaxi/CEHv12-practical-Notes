@@ -2204,7 +2204,7 @@ Content-Type: application/x-php`
 
 - `sudo find / -name root.txt 2>/dev/null`
 
-## <span style="color: #3498db; font-size: 0.8em;"> scalate privileges with passwd and  </span>
+## <span style="color: #3498db; font-size: 0.8em;"> scalate privileges with passwd and shadow  </span>
 
 > Copy passwd and shadow registers on diferent files
 - `cat /etc/passwd` - user information
