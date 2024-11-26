@@ -708,7 +708,9 @@ LDAP enumeration allows you to gather information about usernames, addresses, de
 * Click one IP > View shares
 * Manual Tools > * nix RPC Info > Enter the IP target into target field > Dump portmap
 
-> SMB
+> SMB enumerating smb shares
+- `smbclient -L //IP`
+> SMB 
 - `nmap -sU -sS --script=smb-enum-users IP`
 - `crackmapexec smb IP -u userList -p 'password'`
 - `crackmapexec smb IP --shares -u '' -p ''`
@@ -727,11 +729,11 @@ LDAP enumeration allows you to gather information about usernames, addresses, de
 	`queryuser 0x3e9`
 - [msf] > `use auxiliary/scanner/smb/smb_login`
 - List the shared resources of an SMB server:
-	`smbclient -L \\\\\\\\IP`
-	`smbclient -L \\\\\\\\IP -U username`
+	`smbclient -L \\\\IP`
+	`smbclient -L  \\\\IP -U username`
 - Access to the shared resources of an SMB server:
-	`smbclient \\\\\\\\IP\\directory`
-	`smbclient \\\\\\\\IP\\directory -U username`
+	`smbclient \\\\IP\\directory`
+	`smbclient x\\\\IP\\directory -U username`
 - Interesting commands:
 	`get file`
 	`mget *`
