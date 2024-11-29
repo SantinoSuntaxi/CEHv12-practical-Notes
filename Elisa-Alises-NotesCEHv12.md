@@ -2272,3 +2272,8 @@ Content-Type: application/x-php`
 
 > High
 - `1' UNION SELECT user, password FROM users#`
+
+## <span style="color: #3498db; font-size: 0.8em;"> search vulnerabilities </span>
+
+- `searchsploit name`
+- `/usr/share/exploitdb`
