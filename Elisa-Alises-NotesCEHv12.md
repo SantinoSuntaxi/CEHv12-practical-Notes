@@ -855,6 +855,9 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 
 >  Nikto
 - `nikto -h domain`
+- `nmap --top-ports 1000 10.10.64.208 -oG - | nikto -h -`
+- `nikto -h 10.10.64.208 -p 8080 -Display 2`
+
 
 > Nuclei
 - `nuclei -u https://IP`
@@ -1338,7 +1341,7 @@ View > memory
 - Edit > Find Packet > select string
 - You can manage interfaces and click on remote interfaces tab to add a remote host with authentication.
 - Filters like: http.request.method == POST
-
+- ftp contains "echo"
 
 ## <span style="color: #3498db; font-size: 0.8em;">    Analyze a Network</span>
 
@@ -1443,7 +1446,8 @@ IP1 is the target address and IP2 is the spoofable IP
 
 > Wireshark
 - Yellow, black or blue packets (SYN, TCP, UDP, ARP, ECN, CWR)
-
+> Wireshark see DDOS attack
+- tcp.flags.syn == 1 and tcp.flags.ack == 0
 
 ----
 
@@ -1647,8 +1651,19 @@ Example: `hydra -L /home/usernames.txt -P /home/pass.txt ftp://IP`
 * Enumerate users: `wpscan --url domain --enumerate u`
 * Enumerate vulnerable plugins: `wpscan --url domain --enumerate vp`
 
+# WPScan Enumerations
+
+| **Flag**       | **Description**                                             | **Full Example**                   |
+|-----------------|-------------------------------------------------------------|-------------------------------------|
+| `p`            | Enumerate Plugins                                           | `--enumerate p`                    |
+| `t`            | Enumerate Themes                                            | `--enumerate t`                    |
+| `u`            | Enumerate Usernames                                         | `--enumerate u`                   |
+| `v`            | Use WPVulnDB to cross-reference for vulnerabilities. Example command looks for vulnerable plugins (p) | `--enumerate vp`                   |
+| `aggressive`   | This is an aggressiveness profile for WPScan to use.         | `--plugins-detection aggressive`   |
+
+
 >  Brute force credentials in Wordpress
-- `wpscan --url http://IP --password wordlistPass --usernames wordlistUsers`
+- `wpscan --url http://IP --passwords wordlistPass --usernames wordlistUsers`
 
 > Burp Suite -> intruder
 
@@ -2070,6 +2085,11 @@ If the domain has different IPs associated with it, it has a balancer.
 
 # <span style="color: #e84393; font-size: 1em;">Module 20: Cryptography</span>
 
+## <span style="color: #3498db; font-size: 0.8em;">   See hashes</span>
+
+* md5sum, sha1sum, sha256sum, and sha512sum 
+
+
 ## <span style="color: #3498db; font-size: 0.8em;">   Calculate One-way hashes</span>
 
 * HashCalc (Windows)
@@ -2277,3 +2297,4 @@ Content-Type: application/x-php`
 
 - `searchsploit name`
 - `/usr/share/exploitdb`
+
