@@ -710,6 +710,7 @@ LDAP enumeration allows you to gather information about usernames, addresses, de
 
 > SMB enumerating smb shares
 - `smbclient -L //IP`
+- `smbclient //IP/BillySMB `
 > SMB 
 - `nmap -sU -sS --script=smb-enum-users IP`
 - `crackmapexec smb IP -u userList -p 'password'`
@@ -1630,7 +1631,7 @@ Example: `hydra -L /home/usernames.txt -P /home/pass.txt ftp://IP`
 
 > Pentest Wordpress
 * https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress
-
+-  xmlrpc.php
 > Interesting paths
 * /wp-login.php
 * /wp-login
