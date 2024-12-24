@@ -2298,4 +2298,22 @@ Content-Type: application/x-php`
 
 - `searchsploit name`
 - `/usr/share/exploitdb`
+- `sudo apt install xploitdb`
 
+>con python tener un shell legible 
+
+- `python -c 'import pty; pty.spawn("/bin/bash")'`
+-  script /dev/null -c bash
+-  find / -perm -4000 2>/dev/null
+- if find /usr/bin/pkexec hacked
+
+> to check if python is installed or not
+- which python 
+
+>Find files 
+
+- find ~ -type f -name "*.txt"
+
+- find  -type f -name "*.txt"
+
+- find / -name "user.txt"
