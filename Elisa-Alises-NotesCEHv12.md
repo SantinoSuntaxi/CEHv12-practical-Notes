@@ -1,5 +1,5 @@
 
-# <span style="color: #3498db; font-size: 1.15em;">🔒 Notes CEHv12 Practical - Elisa Alises</span>
+# <span style="color: #3498db; font-size: 1.15em;">🔒 Notes CEHv12 Practical - Santino Exam</span>
 
 ## 📚 Index of Contents
 
@@ -1708,6 +1708,235 @@ or `[msf]> exploit/multi/http/drupal_drupageddon`
 * Drupalgeddon3: https://github.com/rithchard/Drupalgeddon3 or Metasploit with multi/http/drupal_drupageddon3
 
 
+----
+# Example-1
+There is a machine running WAMP server in the subnet. Provide the IP address of the server.
+
+**Tips:**
+- Scan the entire subnet with `-A` (aggressive scan) in `nmap` or use `-sV` (version flag).
+- You can speed up the scan by specifying port with `-p` as `8080,80,443`.
+
+**Suggested lecture:** Scanning with nmap
+
+---
+
+# Example-2
+Find the FQDN of the domain controller in the network.
+
+**Tips:**
+- Scan the entire subnet with `-A` (aggressive scan) in `nmap`. The FQDN will appear for the server.
+
+**Suggested lecture:** Scanning with nmap
+
+---
+
+# Example-3
+Identify the machine with SMB enabled. Crack the SMB credentials for the username given. Access an encrypted file and decode the encrypted file to retrieve the flag.
+
+**Tips:**
+- Scan the entire subnet for open SMB ports.
+- Use the wordlist available on the desktop on Parrot OS. Use `Hydra` to crack it.
+- You can also use `Metasploit` to crack the password. Use `msfconsole auxiliary/scanner/smb/smb_login`.
+- The password for the encoded file is the same. If the file contains a hash, try to decode it.
+
+**Suggested lecture:** SMB enumeration, FTP Exploitation
+
+---
+
+# Example-4
+There is an Android device in the subnet. Identify the device. Get the files in the scan folder. Provide SHA384 hash with the largest entropy.
+
+**Tips:**
+- Scan the entire subnet to identify the Android device.
+- Use `Phonesploit`, pull the required folder to download files, check the entropy of all files (Detect It Easy tool), and then calculate hash (HashCalc).
+
+**Suggested lectures:**
+- Hacking Android Devices with Phonesploit over ADB
+- Analyze ELF Executable File using Detect It Easy (DIE)
+- Calculating Hashes on Windows with different tools
+
+---
+
+# Example-5
+Perform the vulnerability scan for the given IP address. What is the severe value of a vulnerability that indicates the end of life for a web development language platform?
+
+**Tips:**
+- Use Nessus to scan the target. Nessus will provide all results.
+
+---
+
+# Example-6
+Exploit a remote login application on a Linux target in the given subnet to access a sensitive file. Enter the content of the file.
+
+**Tips:**
+- Use `Hydra` to break the password for Telnet, log in, access the file, and enter the flag.
+
+**Suggested lecture:** FTP Exploitation, Telnet Exploitation
+
+---
+
+# Example-7
+Analyze the image file to extract the hidden message. Password is given.
+
+**Tips:**
+- Use OpenStego to reveal the secret.
+
+**Suggested lecture:** Image Steganography
+
+---
+
+# Example-8
+Exploit weak credentials of FTP. Obtain the hidden file.
+
+**Tips:**
+- Use `Hydra` to break the password, log in, access the file, and enter the flag.
+
+**Suggested lecture:** FTP Exploitation
+
+---
+
+# Example-9
+Escalate privilege on a Linux machine. User-level credentials are given.
+
+**Tips:**
+- Use `polkit` exploit to get root access.
+
+**Suggested lecture:** Walkthrough - Escalate Privileges by Exploiting Vulnerability in pkexec
+
+---
+
+# Example-10
+Find a file entry point. File is given.
+
+**Tips:**
+- Use DIE (Detect It Easy) or EXEinfo PE tools.
+
+**Suggested lectures:**
+- Analyze ELF Executable File using Detect It Easy (DIE)
+- Find the Portable Executable (PE) Information of a Malware Executable File
+
+---
+
+# Example-11
+From a pcap file, analyze a DDOS attack and provide the IP address that sent most packets.
+
+**Tips:**
+- Use Wireshark and the statistics tab.
+
+**Suggested lecture:** Detect DDOS attack with Wireshark
+
+---
+
+# Example-12
+You are provided a username/password for a website. Use SQL Injection attack to extract the password of another user.
+
+**Tips:**
+- Log in with the given credentials. Use cookies to extract the password of a user from the table with SQLMap.
+
+Commands:
+```bash
+$ sqlmap -u "URL" --cookie="captured cookie of logged-in user" --dbs # For Database
+$ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME> --tables # For Tables of selected Database
+$ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME> -T <TABLE_NAME> --columns # For Column names
+$ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME> -T <TABLE_NAME> --dump # Dump Table
+```
+
+**Suggested lectures:** SQL Injection Vulnerabilities, SQL Injection Challenge (SQLMap THM Free Room)
+
+---
+
+# Example-13
+Exploit a web application at www.xxxx.com and enter the flag value from the given page.
+
+**Tips:**
+- Find any input parameter on the website and capture the request in Burp Suite, then use it to perform SQL Injection using SQLMap.
+
+Commands:
+```bash
+$ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --tables
+$ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --tables --columns
+$ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --dump
+$ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --tables -T users
+```
+
+**Suggested lectures:** SQL Injection Vulnerabilities, SQL Injection Challenge (SQLMap THM Free Room)
+
+---
+
+# Example-14
+Perform vulnerability research and exploit the target at the given site.
+
+**Tips:**
+- Scan the target with ZAP to find the vulnerability. Then exploit it. It can be a file upload/File inclusion vulnerability on DVWA.
+
+**Suggested lectures:** DVWA File Upload, File Inclusion
+
+---
+
+# Example-15
+Perform SQL Injection on a website and extract the flag value.
+
+**Tips:**
+- Use SQLMap.
+
+**Suggested lectures:** SQL Injection Vulnerabilities, SQL Injection Challenge (SQLMap THM Free Room)
+
+---
+
+# Example-16
+A file is available in a directory with DVWA. Access the file and enter the contents.
+
+**Tips:**
+- Use the file inclusion mechanism to access the file.
+
+**Suggested lecture:** DVWA File Inclusion
+
+---
+
+# Example-17
+Analyze IoT traffic from a pcap file. Identify the packet with the publish message and enter the length.
+
+**Tips:**
+- Open the IoT capture file in Wireshark. Filter MQTT and find the length of the packet in the lower pane.
+
+**Suggested lecture:** Detect IoT Traffic
+
+---
+
+# Example-18
+Crack the weak credentials of WiFi from a pcap file.
+
+**Tips:**
+- Use `aircrack-ng` to crack the password.
+
+Command:
+```bash
+$ aircrack-ng 'target_file.cap' -w <wordlist>
+```
+
+**Suggested lecture:** Walkthrough - Perform Wireless Attacks, Crack WiFi with Aircrack
+
+---
+
+# Example-19
+A RAT server is installed on a server. Connect with it and access the file.
+
+**Tips:**
+- Scan all ports with `nmap` (`-p-`). Look for the unknown ports. Use Theef RAT to connect to it.
+
+**Suggested lecture:** Create a Trojan Server using Theef RAT Trojan
+
+---
+
+# Example-20
+Decrypt the VeraCrypt volume.
+
+**Tips:**
+- Use VeraCrypt to decrypt the volume.
+- Use VeraCrypt to log in to the hidden drive.
+- The password is hidden in another machine. Open the file, decrypt the hash, and enter the contents.
+
+**Suggested lectures:** Disk Encryption Using VeraCrypt, Calculating Hashes on Windows with Different Tools
 
 ----
 
@@ -2345,3 +2574,7 @@ Content-Type: application/x-php`
 - find  -type f -name "*.txt"
 
 - find / -name "user.txt"
+
+- Get-ChildItem -Path C:\ -Recurse -Include secret.txt -ErrorAction SilentlyContinue
+
+- nmap —script smb-os-discovery ip 
